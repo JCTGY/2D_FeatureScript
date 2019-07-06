@@ -47,7 +47,7 @@ Parameter option:
 
 ![1 X 1 Lego.png](/image/1X1_Lego.png)\
 In created bottom hollow tube for lego: \
-add true add the back, which means only extrude the part outter ring\
+add true add the back, which means only extrude the part outter ring
 ```
 opExtrude(context, id + "tube_cir_extrude, true",
 ```
