@@ -17,8 +17,8 @@ Parameter option:
 >   * Mid Circle Radius
 >   * Lit Circle Radius\
 [Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/2D_circles.fs)\
-Thanks to @paul_chastell at [onshape forum](https://forum.onshape.com/discussion/11944/question-about-feature-script-sketch-merge-and-constrain-when-using-circular-pattern#latest))\
-rotationAround is used to achieve circular pattern in the same sketch\
+Thanks to @paul_chastell at [onshape forum](https://forum.onshape.com/discussion/11944/question-about-feature-script-sketch-merge-and-constrain-when-using-circular-pattern#latest)\
+rotationAround is used to achieve circular pattern in the same sketch
 ```
         for (var i = 0; i < count; i += 1)
         {
