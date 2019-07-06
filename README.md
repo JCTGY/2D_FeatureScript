@@ -38,7 +38,8 @@ rotationAround is used to achieve circular pattern in the same sketch
 
 ## Lego bricks
 ![1 X 1 Lego.png](/image/1X1_Lego.png)\
-![1 X 1 Lego.png](/image/1X1_Lego.png)\
-![1 X 1 Lego.png](/image/1X1_Lego.png)\
-![1 X 1 Lego.png](/image/1X1_Lego.png)\
-![1 X 1 Lego.png](/image/1X1_Lego.png)\
+![2 X 2 Lego.png](/image/2X2_Lego.png)\
+![2 X 2 Lego.png](/image/2X2_Lego_Back.png)\
+![5 X 1 Lego.png](/image/5X1_Lego.png)\
+![5 X 1 Lego.png](/image/5X1_Lego_Back.png)\
+![9 X 9 Lego.png](/image/9X9_Lego.png)\
