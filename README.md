@@ -2,6 +2,7 @@
 
 * [Objective](#objective)
 * [2D project](#2D-project)
+* [Lego bricks](#Lego-bricks)
 
 ## Objective
 school 42 RoboLab learning CAD automation by using FeatureScript produced by [Onshape](https://www.onshape.com/).
@@ -34,3 +35,5 @@ rotationAround is used to achieve circular pattern in the same sketch
             });
         }
 ```
+
+## Lego bricks
