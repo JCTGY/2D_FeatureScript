@@ -1,6 +1,7 @@
 # CAD_FeatureScript
 
 * [Objective](#objective)
+* [2D project](#2D_project)
 
 ## Objective
 school 42 RoboLab learning CAD automation by using FeatureScript produced by [Onshape](https://www.onshape.com/).
