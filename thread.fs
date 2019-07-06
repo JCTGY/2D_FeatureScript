@@ -5,7 +5,7 @@ import(path : "onshape/std/geometry.fs", version : "1096.0");
 **  enum for diameter of thread
 **  source form https://www.fullerfasteners.com/tech/basic-metric-thread-chart-m1-m100-2/
 */
-export enum Thread_Size
+export enum ThreadSize
 {
     annotation { "Name" : "Diameter M1" } M1,
     annotation { "Name" : "Diameter M2" } M2,
@@ -20,7 +20,7 @@ export enum Thread_Size
     
 }
 
-export const LENGTH_THREAD =
+export const LENGTHTHREAD =
 {
     (millimeter) : [0, 10, 20]
 } as LengthBoundSpec;
@@ -37,9 +37,9 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
         annotation { "Name" : "Hole", "Filter" : EntityType.FACE && GeometryType.CYLINDER, "MaxNumberOfPicks" : 1 }
         definition.hole is Query;
         annotation { "Name" : "Basic Metric Thread" }
-        definition.size is Thread_Size;
+        definition.size is ThreadSize;
         annotation { "Name" : "Length of Thread" }
-        isLength(definition.Length, LENGTH_THREAD);  
+        isLength(definition.Length, LENGTHTHREAD);  
     }
     {
         /*
@@ -56,29 +56,29 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
         **                          https://www.fullerfasteners.com/tech/basic-metric-thread-chart-m1-m100-2/
         **
         **  Method:
-        **  Create cylinde in the hole -> helix for cut path -> curve_point plane to sketch triangle cutter
+        **  Create cylinde in the hole -> helix for cut path -> curvePoint plane to sketch triangle cutter
         **  -> sweep with remove to create the thread -> clean up the unsued objects
         **
-        **  Tips: can modifides pitch size and cut_sized to the desired size of the thread uint in millimeter
+        **  Tips: can modifides pitch size and cutSized to the desired size of the thread uint in millimeter
         */
-        var thread_face = definition.hole; 
-        var othreadAxis is Line = evAxis(context, { "axis" : thread_face });
-        var threadRad is ValueWithUnits = evSurfaceDefinition(context, { "face" : thread_face }).radius * meter / millimeter;
+        var threadFace = definition.hole; 
+        var othreadAxis is Line = evAxis(context, { "axis" : threadFace });
+        var threadRad is ValueWithUnits = evSurfaceDefinition(context, { "face" : threadFace }).radius * meter / millimeter;
         var xDirection is Vector = othreadAxis.direction;
         var zDirection is Vector = perpendicularVector(othreadAxis.direction);
         var cSys is CoordSystem = coordSystem(othreadAxis.origin, xDirection, zDirection);
-        var pitch is ValueWithUnits = pitch_size(context, definition);
+        var pitch is ValueWithUnits = pitchSize(context, definition);
 
-        create_cylinder(context, id, definition, othreadAxis, threadRad);
-        create_helix_cutter(context, id, definition, xDirection, zDirection, othreadAxis, threadRad, pitch);
-        var cut_plane is array = [];
-        var cutter_size = getVariable(context, "cutter_size");
-        cut_plane = append(cut_plane, qCreatedBy(id + "helix1", EntityType.EDGE));
-        cut_plane = append(cut_plane, qNthElement(qCreatedBy(id + "helix1", EntityType.VERTEX), 0));
-        create_curve_point_plane(context, id, cut_plane);
-        create_triangle_cutter(context, id, cut_plane, cutter_size, xDirection);
-        sweep_with_cutter(context, id);
-        clean_up_unuse(context, id);
+        createCylinder(context, id, definition, othreadAxis, threadRad);
+        createHelixCutter(context, id, definition, xDirection, zDirection, othreadAxis, threadRad, pitch);
+        var cutPlane is array = [];
+        var cutterSize = getVariable(context, "cutterSize");
+        cutPlane = append(cutPlane, qCreatedBy(id + "helix1", EntityType.EDGE));
+        cutPlane = append(cutPlane, qNthElement(qCreatedBy(id + "helix1", EntityType.VERTEX), 0));
+        createCurvePointPlane(context, id, cutPlane);
+        createTriangleCutter(context, id, cutPlane, cutterSize, xDirection);
+        sweepWithCutter(context, id);
+        cleanUpUnuse(context, id);
     });
     
     /*
@@ -87,51 +87,51 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
     **             definition: include definition.hole and definition.size
     **  return: [ValueWithUnits] pitch size in millimeter
     */
-    function pitch_size(context is Context, definition is map)
+    function pitchSize(context is Context, definition is map)
     {
         var pitch is ValueWithUnits = 0 * millimeter;
-        var cutter_size = 1;
-        if (definition.size == Thread_Size.M1){
+        var cutterSize = 1;
+        if (definition.size == ThreadSize.M1){
             pitch = 0.25 * millimeter;
-            cutter_size = 0.2;
+            cutterSize = 0.2;
         }
-        else if (definition.size == Thread_Size.M2){
+        else if (definition.size == ThreadSize.M2){
             pitch = 0.4 * millimeter;
-            cutter_size = 0.25;
+            cutterSize = 0.25;
         }
-        else if (definition.size == Thread_Size.M3){
+        else if (definition.size == ThreadSize.M3){
             pitch = 0.5 * millimeter;
-            cutter_size = 0.35;
+            cutterSize = 0.35;
         }
-        else if (definition.size == Thread_Size.M4){
+        else if (definition.size == ThreadSize.M4){
             pitch = 0.6 * millimeter;
-            cutter_size = 0.4;
+            cutterSize = 0.4;
         }
-        else if (definition.size == Thread_Size.M5){
+        else if (definition.size == ThreadSize.M5){
             pitch = 0.8 * millimeter;
-            cutter_size = 0.5;
+            cutterSize = 0.5;
         }
-        else if (definition.size == Thread_Size.M6){
+        else if (definition.size == ThreadSize.M6){
             pitch = 1 * millimeter;
-            cutter_size = 0.75;
+            cutterSize = 0.75;
         }
-        else if (definition.size == Thread_Size.M7){
+        else if (definition.size == ThreadSize.M7){
             pitch = 1 * millimeter;
-            cutter_size = 0.75;
+            cutterSize = 0.75;
         }
-        else if (definition.size == Thread_Size.M8){
+        else if (definition.size == ThreadSize.M8){
             pitch = 1.25 * millimeter;
-            cutter_size = 1;
+            cutterSize = 1;
         }  
-        else if (definition.size == Thread_Size.M9){
+        else if (definition.size == ThreadSize.M9){
             pitch = 1.25 * millimeter;
-            cutter_size = 1;
+            cutterSize = 1;
         }
-        else if (definition.size == Thread_Size.M10){
+        else if (definition.size == ThreadSize.M10){
             pitch = 1.5 * millimeter;
-            cutter_size = 1.25;
+            cutterSize = 1.25;
         }
-        setVariable(context, "cutter_size", cutter_size);
+        setVariable(context, "cutterSize", cutterSize);
         return pitch;
     }
     
@@ -143,24 +143,24 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
     **             threadRad: [ValueWithUnits]hole radius
     **  return: NULL
     */
-    function create_cylinder(context is Context, id is Id, definition is map, othreadAxis is Line, threadRad is ValueWithUnits)
+    function createCylinder(context is Context, id is Id, definition is map, othreadAxis is Line, threadRad is ValueWithUnits)
     {
-        var sketch_plane = qNthElement(qEntityFilter(qAdjacent(definition.hole, AdjacencyType.EDGE), EntityType.FACE), 0);
-        var sk_edgecir = newSketch(context, id + "sketch1", {
-                "sketchPlane" : sketch_plane
+        var sketchPlane = qNthElement(qEntityFilter(qAdjacent(definition.hole, AdjacencyType.EDGE), EntityType.FACE), 0);
+        var skEdgecir = newSketch(context, id + "sketch1", {
+                "sketchPlane" : sketchPlane
         });
-        var plane_circle is Plane = evPlane(context, {
-                "face" : sketch_plane
+        var planeCircle is Plane = evPlane(context, {
+                "face" : sketchPlane
         });
-        var d2_center = worldToPlane(plane_circle, othreadAxis.origin * meter / millimeter);
-        skCircle(sk_edgecir, "circle1", {
-                "center" : vector(d2_center[0] , d2_center[1]) / meter * millimeter,
+        var d2Center = worldToPlane(planeCircle, othreadAxis.origin * meter / millimeter);
+        skCircle(skEdgecir, "circle1", {
+                "center" : vector(d2Center[0] , d2Center[1]) / meter * millimeter,
                 "radius" :  threadRad / meter * millimeter
         });
-        skSolve(sk_edgecir);
+        skSolve(skEdgecir);
         opExtrude(context, id + "extrude1", {
                 "entities" : qNthElement(qCreatedBy(id + "sketch1", EntityType.EDGE), 0),
-                "direction" : plane_circle.normal * -1,
+                "direction" : planeCircle.normal * -1,
                 "endBound" : BoundingType.BLIND,
                 "endDepth" : definition.Length
         });
@@ -177,7 +177,7 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
     **             pitch: [ValueWithUnits]pitch size of the thread
     **  return: NULL
     */
-    function create_helix_cutter(context is Context, id is Id, definition is map, xDirection is Vector, zDirection is Vector, othreadAxis is Line, threadRad is ValueWithUnits, pitch is ValueWithUnits)
+    function createHelixCutter(context is Context, id is Id, definition is map, xDirection is Vector, zDirection is Vector, othreadAxis is Line, threadRad is ValueWithUnits, pitch is ValueWithUnits)
     {
         var axistart = othreadAxis.origin * millimeter / meter;
         var origin = axistart /millimeter;
@@ -205,14 +205,14 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
     /*
     **  Create create_curve_point_plane
     **  Parameter: context: file's context, 
-    **             cut_plane: array [0]: [Query]helix EntityType.EDGE, 
+    **             cutPlane: array [0]: [Query]helix EntityType.EDGE, 
     **                              [1]: [Query]helix start position EntityType.VERTEX
     **  return: NULL
     */
-    function create_curve_point_plane(context is Context, id is Id, cut_plane is array)
+    function createCurvePointPlane(context is Context, id is Id, cutPlane is array)
     {  
         cPlane(context, id + "cplane", { 
-                "entities" : qUnion(cut_plane),
+                "entities" : qUnion(cutPlane),
                 "cplaneType" : CPlaneType.CURVE_POINT, 
                 "flipAlignment" : false, 
                 "width" : 6.0 * inch, 
@@ -224,55 +224,55 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
     /*
     **  Crete the triangle cutter
     **  Parameter: context: file's context, 
-    **             cut_plane: array [0]: [Query]helix EntityType.EDGE, 
+    **             cutPlane: array [0]: [Query]helix EntityType.EDGE, 
     **                              [1]: [Query]helix start position EntityType.VERTEX
-    **             cutter_size: [number]length of the triangle's side
+    **             cutterSize: [number]length of the triangle's side
     **             xDirection: [Vector]the x-axis direction according to the hole
     **  return: NULL
     */
-    function create_triangle_cutter(context is Context, id is Id, cut_plane is array, cutter_size is number, xDirection is Vector)
+    function createTriangleCutter(context is Context, id is Id, cutPlane is array, cutterSize is number, xDirection is Vector)
     {
         var cplane = evPlane(context, {
                 "face" : qCreatedBy(id + "cplane", EntityType.FACE)
         });
-        var sketch_cut = newSketchOnPlane(context, id + "sketch2", {
+        var sketchCut = newSketchOnPlane(context, id + "sketch2", {
                 "sketchPlane" : cplane
         });
         var point1 = evVertexPoint(context, {
-                "vertex" : cut_plane[1]
+                "vertex" : cutPlane[1]
         });
         var p1 is Vector = vector(0, 0);
         var p2 is Vector = vector(0, 0);
         var p3 is Vector = vector(0, 0);
-        var point_st = worldToPlane(cplane, point1);
+        var pointSt = worldToPlane(cplane, point1);
         if (xDirection[0] != 0){
-            p1 = point_st / meter * millimeter;
-            p2 = point_st / meter * millimeter - vector(cutter_size, 0) * millimeter;
-            p3 =  point_st / meter * millimeter + vector(dot(vector(0, cutter_size) * millimeter, vector(0, -sqrt(3) / 4)), dot(vector(0, cutter_size) * millimeter, vector(0, 3/4)));
+            p1 = pointSt / meter * millimeter;
+            p2 = pointSt / meter * millimeter - vector(cutterSize, 0) * millimeter;
+            p3 =  pointSt / meter * millimeter + vector(dot(vector(0, cutterSize) * millimeter, vector(0, -sqrt(3) / 4)), dot(vector(0, cutterSize) * millimeter, vector(0, 3/4)));
         }
         else if (xDirection[1] != 0){
-            p1 = point_st / meter * millimeter;
-            p2 = point_st / meter * millimeter + vector(cutter_size, 0) * millimeter;
-            p3 =  point_st / meter * millimeter - vector(dot(vector(0, cutter_size) * millimeter, vector(0, -sqrt(3) / 4)), dot(vector(0, cutter_size) * millimeter, vector(0, 3/4)));
+            p1 = pointSt / meter * millimeter;
+            p2 = pointSt / meter * millimeter + vector(cutterSize, 0) * millimeter;
+            p3 =  pointSt / meter * millimeter - vector(dot(vector(0, cutterSize) * millimeter, vector(0, -sqrt(3) / 4)), dot(vector(0, cutterSize) * millimeter, vector(0, 3/4)));
         }
         else if (xDirection[2] != 0){
-            p1 = point_st / meter * millimeter;
-            p2 = point_st / meter * millimeter - vector(0, cutter_size) * millimeter;
-            p3 =  point_st / meter * millimeter - vector(dot(vector(cutter_size, 0) * millimeter, vector(3/4, 0)), dot(vector(cutter_size, 0) * millimeter, vector(sqrt(3) / 4, 0)));
+            p1 = pointSt / meter * millimeter;
+            p2 = pointSt / meter * millimeter - vector(0, cutterSize) * millimeter;
+            p3 =  pointSt / meter * millimeter - vector(dot(vector(cutterSize, 0) * millimeter, vector(3/4, 0)), dot(vector(cutterSize, 0) * millimeter, vector(sqrt(3) / 4, 0)));
         }
-        skLineSegment(sketch_cut, "line1", {
+        skLineSegment(sketchCut, "line1", {
                 "start" : p1,
                 "end" : p2
         });
-        skLineSegment(sketch_cut, "line2", {
+        skLineSegment(sketchCut, "line2", {
                 "start" : p1,
                 "end" :  p3
         });
-        skLineSegment(sketch_cut, "line3", {
+        skLineSegment(sketchCut, "line3", {
                 "start" : p3,
                 "end" : p2
         });
-        skSolve(sketch_cut);  
+        skSolve(sketchCut);  
     }
     
     /*
@@ -281,7 +281,7 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
     **  Parameter: context: file's context
     **  return: NULL
     */
-    function sweep_with_cutter(context is Context, id is Id)
+    function sweepWithCutter(context is Context, id is Id)
     {
          sweep(context, id + "sweep", {
             "profiles" : qSketchRegion(id + "sketch2"),
@@ -301,7 +301,7 @@ export const myFeature = defineFeature(function(context is Context, id is Id, de
     **  Parameter: context: file's context
     **  return: NULL
     */
-    function clean_up_unuse(context is Context, id is Id)
+    function cleanUpUnuse(context is Context, id is Id)
     {
         opDeleteBodies(context, id + "deleteBodies1", {
                 "entities" : qSketchFilter(qCreatedBy(id), SketchObject.YES)
