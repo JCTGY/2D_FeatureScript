@@ -6,8 +6,8 @@ learning CAD automation by using FeatureScript produced. FeatureScript is a lang
 
 Projects written by FeatureScript
 * [2D project](#2D-project) circles and arcs with FeatureScript
-* [Lego bricks](#Lego-bricks) able to change row and colum
-* Thread feature
+* [Lego bricks](#Lego-bricks) create lego by given row and column
+* [Thread feature](#Thread-Feature) create thred from given hole
 
 
 ## 2D project
@@ -38,7 +38,7 @@ rotationAround is used to achieve circular pattern in the same sketch
 
 ## Lego bricks
 Parameter option:
->   * Row Lego\
+>   * Row Lego
 >   * Col Lego\
 [Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/lego_bricks.fs)\
 [Onshape Document](https://cad.onshape.com/documents/da6b009e9c013270aeae4cd8/w/05c0f5a10696f0c50747bc21/e/385ac05fe04a705f8d000c23)
@@ -79,3 +79,12 @@ X * 1 || 1 * X lego brick have a solid supporting tube\
 ![5 X 1 Lego.png](/image/5X1_Lego.png)
 ![5 X 1 Lego.png](/image/5X1_Lego_Back.png)
 ![10 X 10 Lego.png](/image/10X10_Lego.png)
+
+## Thread Feature
+Parameter option:
+>   * Thread size M1 ~ M10
+>   * Length of the Thread\
+[Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/lego_bricks.fs)\
+[Onshape Document](https://cad.onshape.com/documents/fa2c2ec63e032fe923d391dc/w/6056dc84910a12dddbff2ca8/e/0c6dea32aea85828cc3f2808)\
+
+
