@@ -79,4 +79,4 @@ However, will leave the code as it is for future references
 X * 1 || 1 * X lego brick have a solid supporting tube\
 ![5 X 1 Lego.png](/image/5X1_Lego.png)
 ![5 X 1 Lego.png](/image/5X1_Lego_Back.png)
-![9 X 9 Lego.png](/image/9X9_Lego.png)
+![10 X 10 Lego.png](/image/10X10_Lego.png)
