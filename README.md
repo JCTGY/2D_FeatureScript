@@ -1,7 +1,7 @@
 # CAD_FeatureScript
 
 * [Objective](#objective)
-* [2D project](#2D_project)
+* [2D project](#2D-project)
 
 ## Objective
 school 42 RoboLab learning CAD automation by using FeatureScript produced by [Onshape](https://www.onshape.com/).
@@ -13,7 +13,7 @@ Three projects
 ## 2D project
 ![](/image/2D_Circles.png)\
 Parameter option:\
-    Big Circle Radius\
-    Mid Circle Radius\
-    Lit Circle Radius\
+    * Big Circle Radius\
+    * Mid Circle Radius\
+    * Lit Circle Radius\
 [Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/2D_circles.fs)
