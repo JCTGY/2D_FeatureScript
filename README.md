@@ -52,7 +52,7 @@ add true add the back, which means only extrude the part outter ring
 opExtrude(context, id + "tube_cir_extrude, true",
 ```
 Insted of the bottom code. Will still need to delet the inner tube body to make the hollow tube.\
-However, will leave the code as it is for future references\
+However, will leave the code as it is for future references
 ```
             for (var c = 2; c <= col ; c += 1)
             {
