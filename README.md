@@ -1,1 +1,1 @@
-# onshape_CAD_featurescript
+# onshape_CAD_FeatureScript
