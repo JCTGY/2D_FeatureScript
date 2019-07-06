@@ -42,7 +42,7 @@ rotationAround is used to achieve circular pattern in the same sketch
 Parameter option:
 >   * Row Lego
 >   * Col Lego\
-[Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/lego_bricks.fs)\
+[Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/legoBricks.fs)\
 [Onshape Document](https://cad.onshape.com/documents/da6b009e9c013270aeae4cd8/w/05c0f5a10696f0c50747bc21/e/385ac05fe04a705f8d000c23)
 
 ![Lego](https://user-images.githubusercontent.com/46547632/60761377-ec34c600-9ffb-11e9-8d17-fe38b507a6f4.gif)\
