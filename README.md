@@ -10,7 +10,7 @@ Three projects
 * Thread feature
 
 ## 2D project
-![](../image/2D_Circles.png)\
+![](/image/2D_Circles.png)\
 Parameter:\
     Big Circle Radius\
     Mid Circle Radius\
