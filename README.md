@@ -94,7 +94,7 @@ Parameter option:
 Thread size from [FULLER: Basic Metric Thread Chart](https://www.fullerfasteners.com/tech/basic-metric-thread-chart-m1-m100-2/)\
 Custom own pitch size and cut size: \
 In the main function, can change the var pitch and var cutter_size\
-note that the default is in millimeter
+Note that the default is in millimeter
 ```
         var cSys is CoordSystem = coordSystem(othreadAxis.origin, xDirection, zDirection);
         var pitch is ValueWithUnits = pitch_size(context, definition);
