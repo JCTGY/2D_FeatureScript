@@ -58,17 +58,17 @@ However, will leave the code as it is for future references
             {
                 for (var r = 2; r <= row ; r += 1)
                 {
-                    skCircle(tube_sketch, "tube_cir" ~ tube_cir_id, {
+                    skCircle(tubeSketch, "tubeCir" ~ tubeCirId, {
                             "center" : vector(width * (r - 1), width * (c - 1)) * millimeter,
                             "radius" : dia / 4.8 * 6.4  / 2 * millimeter
                     });
-                    tube_cir_id += 1;
+                    tubeCirId += 1;
                 }
             }
-            skSolve(tube_sketch);
-            opExtrude(context, id + "tube_cir_extrude", {
-                "entities" : qSketchRegion(id + "tube_sketch"),
-                "direction" : evOwnerSketchPlane(context, {"entity" : qSketchRegion(id + "tube_sketch")}).normal,
+            skSolve(tubeSketch);
+            opExtrude(context, id + "tubeCirExtrude", {
+                "entities" : qSketchRegion(id + "tubeSketch"),
+                "direction" : evOwnerSketchPlane(context, {"entity" : qSketchRegion(id + "tubeSketch")}).normal,
                 "endBound" : BoundingType.BLIND,
                 "endDepth" : (height - thick) * millimeter
             });
@@ -96,13 +96,13 @@ In the main function, can change the var pitch and var cutter_size\
 Note that the default is in millimeter
 ```
         var cSys is CoordSystem = coordSystem(othreadAxis.origin, xDirection, zDirection);
-        var pitch is ValueWithUnits = pitch_size(context, definition);
+        var pitch is ValueWithUnits = pitchSize(context, definition);
         
-        create_cylinder(context, id, definition, othreadAxis, threadRad);
-        create_helix_cutter(context, id, definition, xDirection, zDirection, othreadAxis, threadRad, pitch);
-        var cut_plane is array = [];
-        var cutter_size = getVariable(context, "cutter_size");
-        cut_plane = append(cut_plane, qCreatedBy(id + "helix1", EntityType.EDGE));
+        createCylinder(context, id, definition, othreadAxis, threadRad);
+        createHelixCutter(context, id, definition, xDirection, zDirection, othreadAxis, threadRad, pitch);
+        var cutPlane is array = [];
+        var cutterSize = getVariable(context, "cutterSize");
+        cutPlane = append(cutPlane, qCreatedBy(id + "helix1", EntityType.EDGE));
  ```
 ![Thread](https://user-images.githubusercontent.com/46547632/60761322-a9beb980-9ffa-11e9-9629-4548d5cfa08b.gif)
 
