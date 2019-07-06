@@ -42,7 +42,8 @@ Parameter option:
 >   * Row Lego
 >   * Col Lego
 [Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/lego_bricks.fs)\
-[Onshape Document](https://cad.onshape.com/documents/da6b009e9c013270aeae4cd8/w/05c0f5a10696f0c50747bc21/e/385ac05fe04a705f8d000c23)
+[Onshape Document](https://cad.onshape.com/documents/da6b009e9c013270aeae4cd8/w/05c0f5a10696f0c50747bc21/e/385ac05fe04a705f8d000c23)\
+
 ![1 X 1 Lego.png](/image/1X1_Lego.png)
 ![2 X 2 Lego.png](/image/2X2_Lego.png)
 ![2 X 2 Lego.png](/image/2X2_Lego_Back.png)
