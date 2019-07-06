@@ -45,13 +45,14 @@ Parameter option:
 [Onshape Document](https://cad.onshape.com/documents/da6b009e9c013270aeae4cd8/w/05c0f5a10696f0c50747bc21/e/385ac05fe04a705f8d000c23)
 
 
-![1 X 1 Lego.png](/image/1X1_Lego.png)
-In created bottom hollow tube for lego: 
-add true add the back, which means only extrude the part outter ring
+![1 X 1 Lego.png](/image/1X1_Lego.png)\
+In created bottom hollow tube for lego: \
+add true add the back, which means only extrude the part outter ring\
 '''
 opExtrude(context, id + "tube_cir_extrude, true",
 '''
-Insted of the bottom code. Still need to delet the body to make the hollow tube
+Insted of the bottom code. Will still need to delet the inner tube body to make the hollow tube.\
+However, will leave the code as it is for future references\
 ```
             for (var c = 2; c <= col ; c += 1)
             {
@@ -72,8 +73,10 @@ Insted of the bottom code. Still need to delet the body to make the hollow tube
                 "endDepth" : (height - thick) * millimeter
             });
 ```
+
 ![2 X 2 Lego.png](/image/2X2_Lego.png)
-![2 X 2 Lego.png](/image/2X2_Lego_Back.png)
+![2 X 2 Lego.png](/image/2X2_Lego_Back.png)\
+X * 1 || 1 * X lego brick have a solid supporting tube\
 ![5 X 1 Lego.png](/image/5X1_Lego.png)
 ![5 X 1 Lego.png](/image/5X1_Lego_Back.png)
 ![9 X 9 Lego.png](/image/9X9_Lego.png)
