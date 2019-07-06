@@ -10,7 +10,7 @@ Three projects
 * Thread feature
 
 ## 2D project
-![GitHub Logo](../images/2D_Circles.png)\
+![GitHub Logo](../image/2D_Circles.png)\
 Parameter:\
     Big Circle Radius\
     Mid Circle Radius\
