@@ -105,7 +105,7 @@ Note that the default is in millimeter
         var cutter_size = getVariable(context, "cutter_size");
         cut_plane = append(cut_plane, qCreatedBy(id + "helix1", EntityType.EDGE));
  ```
-![Thread.gif](/image/Thread.gif)
+![Thread](https://user-images.githubusercontent.com/46547632/60761322-a9beb980-9ffa-11e9-9629-4548d5cfa08b.gif)
 
 
 
