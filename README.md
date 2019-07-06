@@ -36,6 +36,8 @@ rotationAround is used to achieve circular pattern in the same sketch
         }
 ```
 
+
+
 ## Lego bricks
 Parameter option:
 >   * Row Lego
@@ -80,6 +82,8 @@ X * 1 || 1 * X lego brick have a solid supporting tube\
 ![5 X 1 Lego.png](/image/5X1_Lego_Back.png)
 ![10 X 10 Lego.png](/image/10X10_Lego.png)
 
+
+
 ## Thread Feature
 Parameter option:
 >   * Thread size M1 ~ M10
@@ -88,7 +92,7 @@ Parameter option:
 [Onshape Document](https://cad.onshape.com/documents/fa2c2ec63e032fe923d391dc/w/6056dc84910a12dddbff2ca8/e/0c6dea32aea85828cc3f2808)
 
 Thread size from [FULLER: Basic Metric Thread Chart](https://www.fullerfasteners.com/tech/basic-metric-thread-chart-m1-m100-2/)\
-Custom own pitch size and cut size:
+Custom own pitch size and cut size: \
 In the main function, can change the var pitch and var cutter_size\
 note that the default is in millimeter
 ```
