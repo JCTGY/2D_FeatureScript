@@ -11,9 +11,26 @@ Three projects
 * Thread feature
 
 ## 2D project
-![](/image/2D_Circles.png)
+![](/image/2D_Circles.png)\
 Parameter option:
 >   * Big Circle Radius
 >   * Mid Circle Radius
->   * Lit Circle Radius
-[Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/2D_circles.fs)
+>   * Lit Circle Radius\
+[Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/2D_circles.fs)\
+Thanks to @paul_chastell at [onshape forum](https://forum.onshape.com/discussion/11944/question-about-feature-script-sketch-merge-and-constrain-when-using-circular-pattern#latest))\
+rotationAround is used to achieve circular pattern in the same sketch\
+```
+        for (var i = 0; i < count; i += 1)
+        {
+            var rotation = rotationAround(axis, (i / count) * full);
+            var cirId = "cir" ~ i;
+            var c_lit3d = rotation * center;
+            var c_lit2d = vector(c_lit3d[0], c_lit3d[1]); 
+    
+            
+            skCircle(sk, cirId, {
+                "center" : c_lit2d ,
+                "radius" : little_cir * millimeter
+            });
+        }
+```
