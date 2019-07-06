@@ -44,7 +44,34 @@ Parameter option:
 [Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/lego_bricks.fs)\
 [Onshape Document](https://cad.onshape.com/documents/da6b009e9c013270aeae4cd8/w/05c0f5a10696f0c50747bc21/e/385ac05fe04a705f8d000c23)
 
+
 ![1 X 1 Lego.png](/image/1X1_Lego.png)
+In created bottom hollow tube for lego: 
+add true add the back, which means only extrude the part outter ring
+'''
+opExtrude(context, id + "tube_cir_extrude, true",
+'''
+Insted of the bottom code. Still need to delet the body to make the hollow tube
+```
+            for (var c = 2; c <= col ; c += 1)
+            {
+                for (var r = 2; r <= row ; r += 1)
+                {
+                    skCircle(tube_sketch, "tube_cir" ~ tube_cir_id, {
+                            "center" : vector(width * (r - 1), width * (c - 1)) * millimeter,
+                            "radius" : dia / 4.8 * 6.4  / 2 * millimeter
+                    });
+                    tube_cir_id += 1;
+                }
+            }
+            skSolve(tube_sketch);
+            opExtrude(context, id + "tube_cir_extrude", {
+                "entities" : qSketchRegion(id + "tube_sketch"),
+                "direction" : evOwnerSketchPlane(context, {"entity" : qSketchRegion(id + "tube_sketch")}).normal,
+                "endBound" : BoundingType.BLIND,
+                "endDepth" : (height - thick) * millimeter
+            });
+```
 ![2 X 2 Lego.png](/image/2X2_Lego.png)
 ![2 X 2 Lego.png](/image/2X2_Lego_Back.png)
 ![5 X 1 Lego.png](/image/5X1_Lego.png)
