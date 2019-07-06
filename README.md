@@ -87,6 +87,20 @@ Parameter option:
 [Source Code](https://github.com/JCTGY/onshape_CAD_FeatureScript/blob/master/lego_bricks.fs)\
 [Onshape Document](https://cad.onshape.com/documents/fa2c2ec63e032fe923d391dc/w/6056dc84910a12dddbff2ca8/e/0c6dea32aea85828cc3f2808)
 
+Thread size from [FULLER: Basic Metric Thread Chart](https://www.fullerfasteners.com/tech/basic-metric-thread-chart-m1-m100-2/)\
+Custom own pitch size and cut size:
+In the main function, can change the var pitch and var cutter_size\
+note that the default is in millimeter
+```
+        var cSys is CoordSystem = coordSystem(othreadAxis.origin, xDirection, zDirection);
+        var pitch is ValueWithUnits = pitch_size(context, definition);
+        
+        create_cylinder(context, id, definition, othreadAxis, threadRad);
+        create_helix_cutter(context, id, definition, xDirection, zDirection, othreadAxis, threadRad, pitch);
+        var cut_plane is array = [];
+        var cutter_size = getVariable(context, "cutter_size");
+        cut_plane = append(cut_plane, qCreatedBy(id + "helix1", EntityType.EDGE));
+ ```
 ![Thread.png](/image/Thread.png)
 
 
