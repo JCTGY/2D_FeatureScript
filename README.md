@@ -1,7 +1,7 @@
 # CAD_FeatureScript
 
 ## Objective
-school 42 RoboLab learning CAD automation by using FeatureScript produced by [Onshape](https://www.onshape.com/).
+school 42 RoboLab learning CAD automation by using FeatureScript produced. FeatureScript is a language create by [Onshape](https://www.onshape.com/).
 Three projects
 * [2D project](#2D-project) circles and arcs with FeatureScript
 * [Lego bricks](#Lego-bricks) able to change row and colum
