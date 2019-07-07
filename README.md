@@ -25,13 +25,13 @@ rotationAround is used to achieve circular pattern in the same sketch
         {
             var rotation = rotationAround(axis, (i / count) * full);
             var cirId = "cir" ~ i;
-            var c_lit3d = rotation * center;
-            var c_lit2d = vector(c_lit3d[0], c_lit3d[1]); 
+            var cLit3d = rotation * center;
+            var cLit2d = vector(cLit3d[0], cLit3d[1]); 
     
             
             skCircle(sk, cirId, {
-                "center" : c_lit2d ,
-                "radius" : little_cir * millimeter
+                "center" : cLit2d ,
+                "radius" : littleCir * millimeter
             });
         }
 ```
